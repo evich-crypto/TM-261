@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }}{% endblock %}
+
+{% block content %}
+<section class="quiz-page">
+    <h1>{{ quiz.title }}</h1>
+    <p class="quiz-sub">Ответьте на все вопросы и нажмите «Проверить»</p>
+
+    <form method="POST" class="quiz-form">
+        {% for q in quiz.questions %}
+            {% set q_idx = loop.index0 %}
+            <div class="quiz-question">
+                <p class="q-text">{{ loop.index }}. {{ q.q }}</p>
+                <div class="q-options">
+                    {% for opt in q.options %}
+                    <label class="q-option">
+                        <input type="radio" name="q{{ q_idx }}" value="{{ loop.index0 }}" required>
+                        <span>{{ opt }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn-primary">Проверить результаты</button>
+    </form>
+</section>
+{% endblock %}

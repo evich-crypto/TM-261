@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Результат{% endblock %}
+
+{% block content %}
+<section class="result-page">
+    <h1>{{ quiz_title }}</h1>
+
+    <div class="score-circle {% if percent >= 80 %}good{% elif percent >= 50 %}mid{% else %}bad{% endif %}">
+        <div class="score-value">{{ percent }}%</div>
+        <div class="score-label">{{ score }} из {{ total }}</div>
+    </div>
+
+    <p class="score-message">
+        {% if percent == 100 %}🏆 Идеально! Ты отлично усвоил материал.
+        {% elif percent >= 80 %}✨ Отличный результат!
+        {% elif percent >= 50 %}👍 Неплохо, но стоит повторить.
+        {% else %}📚 Рекомендую вернуться к теории.{% endif %}
+    </p>
+
+    <div class="details">
+        {% for d in details %}
+        <div class="detail {% if d.is_correct %}correct{% else %}wrong{% endif %}">
+            <p class="d-q">{{ loop.index }}. {{ d.question }}</p>
+            <p class="d-user">Ваш ответ: <span>{{ d.user }}</span></p>
+            {% if not d.is_correct %}
+            <p class="d-correct">Правильный ответ: <span>{{ d.correct }}</span></p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="result-actions">
+        <a href="{{ url_for('quiz', law_id=law_id) }}" class="btn-secondary">Пройти заново</a>
+        <a href="{{ url_for('index') }}" class="btn-primary">На главную</a>
+    </div>
+</section>
+{% endblock %}

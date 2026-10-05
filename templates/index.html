@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Законы Ньютона — Главная{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1 class="glow">Три закона Ньютона</h1>
+    <p class="subtitle">Классическая механика — фундамент, на котором держится вся физика движения</p>
+    <p class="intro">
+        Исаак Ньютон в 1687 году в труде «Математические начала натуральной философии»
+        сформулировал три закона, которые описывают движение тел и взаимодействие между ними.
+        Сегодня мы разберём каждый из них, рассмотрим примеры и проверим знания.
+    </p>
+</section>
+
+<section class="cards">
+    <a href="{{ url_for('law1') }}" class="card card-1">
+        <div class="card-num">I</div>
+        <h2>Первый закон</h2>
+        <p class="card-sub">Закон инерции</p>
+        <p class="card-desc">Тело сохраняет состояние покоя или равномерного прямолинейного движения, пока на него не действуют силы.</p>
+        <span class="card-btn">Изучить →</span>
+    </a>
+
+    <a href="{{ url_for('law2') }}" class="card card-2">
+        <div class="card-num">II</div>
+        <h2>Второй закон</h2>
+        <p class="card-sub">Основной закон динамики</p>
+        <p class="card-desc">Ускорение тела прямо пропорционально действующей силе и обратно пропорционально его массе.</p>
+        <span class="card-btn">Изучить →</span>
+    </a>
+
+    <a href="{{ url_for('law3') }}" class="card card-3">
+        <div class="card-num">III</div>
+        <h2>Третий закон</h2>
+        <p class="card-sub">Действие и противодействие</p>
+        <p class="card-desc">Силы, с которыми два тела действуют друг на друга, равны по модулю и противоположны по направлению.</p>
+        <span class="card-btn">Изучить →</span>
+    </a>
+</section>
+{% endblock %}
